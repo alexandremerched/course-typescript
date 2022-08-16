@@ -8,22 +8,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const index_1 = require("./utils/index");
-let PrimeiraClasse = class PrimeiraClasse {
-    constructor() { }
-};
-PrimeiraClasse = __decorate([
-    index_1.log,
+function decoratorGetSet(valor) {
+    return function (target, propertyKey, descriptor) {
+        descriptor.enumerable = valor;
+    };
+}
+class Login {
+    _usuario;
+    _senha;
+    constructor(_usuario, _senha) {
+        this._usuario = _usuario;
+        this._senha = _senha;
+    }
+    get usuario() {
+        return this._usuario;
+    }
+    get senha() {
+        return this._senha;
+    }
+}
+__decorate([
+    decoratorGetSet(true),
+    __metadata("design:type", Object),
     __metadata("design:paramtypes", [])
-], PrimeiraClasse);
-let SegundaClasse = class SegundaClasse {
-    constructor() { }
-};
-SegundaClasse = __decorate([
-    index_1.log,
+], Login.prototype, "usuario", null);
+__decorate([
+    decoratorGetSet(false),
+    __metadata("design:type", Object),
     __metadata("design:paramtypes", [])
-], SegundaClasse);
-console.log(new PrimeiraClasse());
-console.log(new SegundaClasse());
-//# sourceMappingURL=decorators_classes.js.map
+], Login.prototype, "senha", null);
+const login = new Login("anthony@hcode.com.br", "102030");
+for (let chave in login) {
+    console.log("chave", chave);
+    console.log("valor", login[chave]);
+}
+//# sourceMappingURL=decorators_get_set.js.map
